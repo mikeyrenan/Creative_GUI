@@ -47,49 +47,49 @@ $("button#clone").on("click", function() {
 		}
 	};
 
-//done with traversal
 $("form.dynamic").on("change", function() {
 	var dynamic = $(this).children("input[name=dynamic]:checked").val();
 	$(this).siblings('.dynamic_distance').css("display", dynamic);	
 });
 
-//done with traversal
+
 $(".distance_text").on("keyup", function() {
 	var text = $(this).val();
 	$(this).parents().prev(".three_twenty_fifty").children().children().children().html(text);
 });
 
-//done with traversal
+
 $("select.alignment").on("change", function() {
 	var alignment = $(this).children("option[name=alignment]:selected").val();
 	$(this).parents().prev(".three_twenty_fifty").children().children().children().css("text-align", alignment);	
 });
 
-//done with traversal
+
 var height=$("#height").val();
 		$(".text").css("height", height +"px");
 
-//done with traversal
+
+
 var width=$("#width").val();
 	$(".text").css("width", width + "px");
 
-//done with traversal
+
+
 $(".creative_url").keyup(function() {
 	var creative_url = $(this).val();
 	$(this).parents().next(".three_twenty_fifty").children().children().css("background-image", 'url(' + creative_url + ')');
 });
 
-//done with traversal
+
 	$(".margin_left").keyup(function() {
 	var marginLeft = $(this).val();
 	$(this).parents().prev(".three_twenty_fifty").children().children().children().css("margin-left", marginLeft + "px");
 	$(this).parents().children(".width").children().val(320-marginLeft);
-	//$(".width").val(320-marginLeft);
 	var width=320-$(this).val();
 	$(this).parents().prev(".three_twenty_fifty").children().children().children().css("width", width + "px");
 });
 
-//done with traversal
+
 	$(".margin_top").keyup(function() {
 	var marginTop = $(this).val();
 	$(this).parents().prev(".three_twenty_fifty").children().children().children().css("margin-top", marginTop + "px");
@@ -98,47 +98,53 @@ $(".creative_url").keyup(function() {
 	$(this).parents().prev(".three_twenty_fifty").children().children().children().css("height", height + "px");
 });
 
-//done with traversal
+
+
 	$(".height").keyup(function() {
 	var height=$(this).val();
 	$(this).parents().prev(".three_twenty_fifty").children().children().children().css("height", height + "px");
 	});
 
-//done with traversal
+
+
 	$(".width").keyup(function() {
 	var width=$(this).val();
 	$(this).parents().prev(".three_twenty_fifty").children().children().children().css("width", width + "px");
 	});
 
-//done with traversal
+
+
 $("select.font").on("change", function() {
 	var font = $(this).children("option[name=font]:selected").val();
 	$(this).parents().prev(".three_twenty_fifty").children().children().children().css("font-family", font);	
 });
 
-//done with traversal
+
+
 $(".color").keyup(function() {
 		var color=$(this).val();
 		$(this).parents().prev(".three_twenty_fifty").children().children().children().css("color", color);
 	});
 
-//done with traversal
+
+
 $(".font-size").keyup(function() {
 	var fontSize=$(this).val();
 	$(this).parents().prev(".three_twenty_fifty").children().children().children().css("font-size", fontSize + "px");
 	});
 
-//done with traversal
+
+
 $("form.bold").on("change", function() {
 	var bold = $(this).children("input[name=bold]:checked").val();
 	$(this).parents().prev(".three_twenty_fifty").children().children().children().css("font-weight", bold);	
 });
 
-//done with traversal
+
+
 $("form.italic").on("change", function() {
 	var italic = $(this).children("input[name=italic]:checked").val();
 	$(this).parents().prev(".three_twenty_fifty").children().children().children().css("font-style", italic);	
-
 });
 });
 
@@ -148,17 +154,18 @@ $("form.italic").on("change", function() {
 
 $("button#testing").on("click", function() {
 	var imageCount = $('#image_count').val();
-	var a = [];
-	for(var i = 1;i<=imageCount;i++) {
+	var theBigArray = [];
+	for(var i = 1;i<=2;i++) {
 		var className = '.image' + (i);
-		var variables = {}
-		var htmlText = $(className).children(".dynamic").siblings(".three_twenty_fifty").children().children().children().toArray();
-		document.write(htmlText);
+		var htmlText = $(className).children(".dynamic").siblings(".three_twenty_fifty").children().children().children().css("background-color", "white");
 		//arr[i] = [];
 		//$(className).css("color", "red")
 	};
 });
 
+window.onbeforeunload = function() {
+  return "WAIT! You'll lose everything if you refresh!";
+};
 
 
 
