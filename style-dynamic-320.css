@@ -90,7 +90,7 @@ span#background {
   display:block;
 }
 
-span#text {
+span.text {
   position:absolute;
   font-family:Arial;
   font-size:10px;
@@ -107,7 +107,7 @@ div#code {
 }
 
 span.border{
-  border:dotted black 1px;
+  border:solid white 1px;
 }
 
 form.image_count {
@@ -125,4 +125,9 @@ button#clone {
 
 .dynamic_distance {
   display:none;
+}
+
+#intro {
+  font-size:25px;
+  font-weight:bold;
 }

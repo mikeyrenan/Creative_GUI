@@ -88,6 +88,10 @@ a {
   text-decoration: none;
 }
 
+a.decorate {
+  text-decoration: none;
+}
+
 span#background {
   background-image:url();
   background-repeat: no-repeat;

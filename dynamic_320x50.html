@@ -18,33 +18,40 @@
 		Dynamic 320x50
 	</h1>
 	<span class="container">
+		<p id="intro">
+			First, determine how many images you'd like:
+		</p>
 		<form class="image_count">
 		Number of Images: <input type="text" id="image_count" name="image_count" value="">
 		</form>
 		<button id="clone">
 		Go!
 		</button>
+		<hr>
+		<h2 style="text-decoration:underline">
+			Workspace:
+		</h2>
 		<p style="font-size:25px;font-weight:bold;">Image1
 		</p>
-		<span class="image" id="first">
-			<form id="dynamic" name="dynamic" action="">
-			<input id="dynamic" type="checkbox" name="dynamic" value="block">Dynamic Distance
-			<input id="dynamic" style="visibility:hidden" checked type="checkbox" name="dynamic" value="none">
+		<span class="image1" id="first">
+			<form class="dynamic" name="dynamic" action="">
+				<input id="dynamic" type="checkbox" name="dynamic" value="block">Dynamic Distance
+				<input id="dynamic" style="visibility:hidden" checked type="checkbox" name="dynamic" value="none">
 			</form>	
 			<form>
-			Creative URL: <input type="text" id="creative_url" name="creative_url" value="">
+			Creative URL: <input type="text" class="creative_url" name="creative_url" value="">
 			</form>
 			<div id="preview" class="three_twenty_fifty">
 				<a href="%{URL0}">
 					<span id="background">	 
-						<span id="text">Default Text
+						<span class="text">Default Text
 						</span>	 
 					</span>	 
 				</a> 
 			</div>
 			<span class="dynamic_distance">
 				<form>
-			Text: <input type="text" id="distance_text" name="distance_text" value="">
+			Text: <input type="text" class="distance_text" name="distance_text" value="">
 				</form>
 				<span>
 				Text Alignment (within selected text box):
@@ -55,16 +62,16 @@
 					<option name="alignment" value="right">Right</option>
 				</select>
 				<form>
-				Margin-left (0 - 320): <input type="text" id="margin_left" name="margin_left">
+				Margin-left (0 - 320): <input type="text" class="margin_left" name="margin_left">
 				</form>
 				<form>
-				Margin-top (0 - 50): <input type="text" id="margin_top" name="margin_top">
+				Margin-top (0 - 50): <input type="text" class="margin_top" name="margin_top">
 				</form>
-				<form>
-				Text Width: <input type="text" id="width" name="width" value="320">
+				<form class="width">
+				Text Width: <input type="text" class="width" id="width" name="width" value="320">
 				</form>
-				<form>
-				Text Height: <input type="text" id="height" name="height" value="50">
+				<form class="height">
+				Text Height: <input type="text" class="height" id="height" name="height" value="50">
 				</form>
 				<span>
 				Font:
@@ -77,21 +84,18 @@
 					<option name="font" value="verdana">Verdana</option>
 				</select>
 				<form>
-				Font color: <input type="text" id="color" name="color">
+				Font color: <input type="text" class="color" name="color">
 				</form>
 				<form>
-				Font size: <input type="text" id="font-size" name="font-size">
+				Font size: <input type="text" class="font-size" name="font-size">
 				</form>
-				<form name="italic" id="italic" action="">
+				<form name="italic" class="italic" action="">
 					<input id="italic" type="checkbox" name="italic" value="italic">Italics
 					<input id="italic" style="visibility:hidden" checked type="checkbox" name="italic" value="normal">
 				</form>
-				<form id="bold" name="bold" action="">
+				<form class="bold" name="bold" action="">
 					<input id="bold" type="checkbox" name="bold" value="bold">Bold
 					<input id="bold" style="visibility:hidden" checked type="checkbox" name="bold" value="normal">
-				</form>
-				<form name="destination_url" action="">
-				Destination URL:<input id="destination_url" type="text" name="destination_url" value="%{URL0}">
 				</form>
 			</span>
 			<div id="code">
@@ -99,8 +103,14 @@
 			<button id="textBox">Text Box Borders!
 			</button>
 		</span>
+	<hr>
+	<form name="destination_url" action="">
+				Destination URL:<input id="destination_url" type="text" name="destination_url" value="%{URL0}">
+	</form>
 	</span>
 	<button id="finish">Give me the html!
+	</button>
+	<button id="testing">testing
 	</button>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="dynamic_320x50.js" type="text/javascript"></script>

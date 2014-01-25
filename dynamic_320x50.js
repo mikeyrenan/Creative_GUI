@@ -13,28 +13,23 @@ $("button#start").on("click", function() {
 });
 
 $("button#textBox").on("click", function() {
-	$('#text').toggleClass("border")
-});
-
-$("form#dynamic").on("change", function() {
-	var dynamic = $("input[name=dynamic]:checked").val();
-	$(".dynamic_distance").css("display", dynamic);	
+	$('.text').toggleClass("border")
 });
 
 $("button#clone").on("click", function() {
 	var imageCount = $('#image_count').val();
 	for(var i = 2;i<=imageCount;i++) {
 		if(i==2) {
-			$('#first').clone().insertAfter(".image").removeAttr("class").removeAttr("id").addClass("image" + i).prepend("<p>Image"+i+"</p>");
+			$('#first').clone().insertAfter(".image1").removeAttr("class").removeAttr("id").addClass("image" + i).prepend("<p>Image"+i+"</p>");
 			$(".image2 p").css({"fontWeight": "bold","font-size": "25px"});
 			$('.image2').find('*').addClass("2");
-			$('.image2').find('*').each(function(){
+			/*$('.image2').find('*').each(function(){
 				var currentID = this.id;
 				var newID = currentID + "2";
 				this.id = newID;
 				console.log(newID);
 			});
-			$('.image2 input#distance_text').val("");
+			$('.image2 input#distance_text').val("");*/
 		}
 		else {
 			var classNumber = "" + i;
@@ -43,92 +38,130 @@ $("button#clone").on("click", function() {
 			$('#first').clone().insertAfter(newImage).removeAttr("class").removeAttr("id").addClass("image" + i).prepend("<p>Image"+i+"</p>");
 			$(boldP).children("p").css({"fontWeight": "bold","font-size": "25px"});
 			$(boldP).find('*').addClass(classNumber);
-			$(boldP).find('*').each(function(){
+			/*$(boldP).find('*').each(function(){
 				var currentID = this.id;
 				var newID = currentID + (i);
 				this.id = newID;
 				console.log(newID);
-			});
+			});*/
 		}
 	};
 
+//done with traversal
+$("form.dynamic").on("change", function() {
+	var dynamic = $(this).children("input[name=dynamic]:checked").val();
+	$(this).siblings('.dynamic_distance').css("display", dynamic);	
+});
+
+//done with traversal
+$(".distance_text").on("keyup", function() {
+	var text = $(this).val();
+	$(this).parents().prev(".three_twenty_fifty").children().children().children().html(text);
+});
+
+//done with traversal
+$("select.alignment").on("change", function() {
+	var alignment = $(this).children("option[name=alignment]:selected").val();
+	$(this).parents().prev(".three_twenty_fifty").children().children().children().css("text-align", alignment);	
+});
+
+//done with traversal
 var height=$("#height").val();
-		$("#text").css("height", height);
+		$(".text").css("height", height +"px");
 
+//done with traversal
 var width=$("#width").val();
-	$("#text").css("width", width);
+	$(".text").css("width", width + "px");
 
-$("#distance_text").keyup(function() {
-	var text = $("#distance_text").val();
-	$("#text").html(text);
+//done with traversal
+$(".creative_url").keyup(function() {
+	var creative_url = $(this).val();
+	$(this).parents().next(".three_twenty_fifty").children().children().css("background-image", 'url(' + creative_url + ')');
 });
 
-$("#distance_text2").keyup(function() {
-	var text = $("#distance_text2").val();
-	$("#text2").html(text);
+//done with traversal
+	$(".margin_left").keyup(function() {
+	var marginLeft = $(this).val();
+	$(this).parents().prev(".three_twenty_fifty").children().children().children().css("margin-left", marginLeft + "px");
+	$(this).parents().children(".width").children().val(320-marginLeft);
+	//$(".width").val(320-marginLeft);
+	var width=320-$(this).val();
+	$(this).parents().prev(".three_twenty_fifty").children().children().children().css("width", width + "px");
 });
 
-$("#creative_url").keyup(function() {
-	var creative_url = $("#creative_url").val();
-	$("#background").css("background-image", 'url(' + creative_url + ')');
+//done with traversal
+	$(".margin_top").keyup(function() {
+	var marginTop = $(this).val();
+	$(this).parents().prev(".three_twenty_fifty").children().children().children().css("margin-top", marginTop + "px");
+	$(this).parents().children(".height").children().val(50-marginTop);
+	var height=50-$(this).val();
+	$(this).parents().prev(".three_twenty_fifty").children().children().children().css("height", height + "px");
 });
 
-	$("select.alignment").on("change", function() {
-	var alignment = $("option[name=alignment]:selected").val();
-	$("#text").css("text-align", alignment);	
-});
-
-	$("#margin_left").keyup(function() {
-	var marginLeft = $("#margin_left").val();
-	$("#text").css("margin-left", marginLeft + "px");
-	$("#width").val(320-marginLeft);
-	var width=$("#width").val();
-	$("#text").css("width", width);
-});
-
-	$("#margin_top").keyup(function() {
-		var marginTop = $("#margin_top").val();
-		$("#text").css("margin-top", marginTop + "px");
-		$("#height").val(50-marginTop);
-		var height=$("#height").val();
-		$("#text").css("height", height);
+//done with traversal
+	$(".height").keyup(function() {
+	var height=$(this).val();
+	$(this).parents().prev(".three_twenty_fifty").children().children().children().css("height", height + "px");
 	});
 
-		$("#height").keyup(function() {
-	var height=$("#height").val();
-	$("#text").css("height", height);
+//done with traversal
+	$(".width").keyup(function() {
+	var width=$(this).val();
+	$(this).parents().prev(".three_twenty_fifty").children().children().children().css("width", width + "px");
 	});
 
-	$("#width").keyup(function() {
-		var width=$("#width").val();
-		$("#text").css("width", width);
-	});
-
-$("#color").keyup(function() {
-		var color=$("#color").val();
-		$("#text").css("color", color);
-	});
-
-$("#font-size").keyup(function() {
-	var fontSize=$("#font-size").val();
-	$("#text").css("font-size", fontSize + "px");
-	});
-
+//done with traversal
 $("select.font").on("change", function() {
-	var font = $("option[name=font]:selected").val();
-	$("#text").css("font-family", font);	
+	var font = $(this).children("option[name=font]:selected").val();
+	$(this).parents().prev(".three_twenty_fifty").children().children().children().css("font-family", font);	
 });
 
-$("form#bold").on("change", function() {
-	var bold = $("input[name=bold]:checked").val();
-	$("#text").css("font-weight", bold);	
+//done with traversal
+$(".color").keyup(function() {
+		var color=$(this).val();
+		$(this).parents().prev(".three_twenty_fifty").children().children().children().css("color", color);
+	});
+
+//done with traversal
+$(".font-size").keyup(function() {
+	var fontSize=$(this).val();
+	$(this).parents().prev(".three_twenty_fifty").children().children().children().css("font-size", fontSize + "px");
+	});
+
+//done with traversal
+$("form.bold").on("change", function() {
+	var bold = $(this).children("input[name=bold]:checked").val();
+	$(this).parents().prev(".three_twenty_fifty").children().children().children().css("font-weight", bold);	
 });
 
-$("form#italic").on("change", function() {
-	var italic = $("input[name=italic]:checked").val();
-	$("#text").css("font-style", italic);	
+//done with traversal
+$("form.italic").on("change", function() {
+	var italic = $(this).children("input[name=italic]:checked").val();
+	$(this).parents().prev(".three_twenty_fifty").children().children().children().css("font-style", italic);	
+
 });
 });
+
+//NEXT create a for loop starting at 1-i where i = total number of images
+//asign each relevant value to an array per <image> span
+//After each array is saved, pull values from these arrays, and use these values to construct the html
+
+$("button#testing").on("click", function() {
+	var imageCount = $('#image_count').val();
+	var a = [];
+	for(var i = 1;i<=imageCount;i++) {
+		var className = '.image' + (i);
+		var variables = {}
+		var htmlText = $(className).children(".dynamic").siblings(".three_twenty_fifty").children().children().children().toArray();
+		document.write(htmlText);
+		//arr[i] = [];
+		//$(className).css("color", "red")
+	};
+});
+
+
+
+
 
 
 
