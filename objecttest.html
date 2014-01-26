@@ -1,0 +1,40 @@
+<body>
+
+<div id="array">
+</div>
+
+<form class="entryClass">
+		Name entry: <input type="text" id="name" name="entry" value="">
+</form>
+<form class="entryClass">
+		Age entry: <input type="text" id="age" name="entry" value="">
+</form>
+<form class="entryClass">
+		Career entry: <input type="text" id="career" name="entry" value="">
+</form>
+
+<button id="b" onclick="toArray()">
+	Add to Array
+</button>
+
+<!--JQuery Script-->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<!--JQuery Script-->
+
+<script type="text/javascript">
+
+var ar = new Object();
+
+
+function toArray() {
+	var name = $('#name').val();
+	var age = $('#age').val();
+	var career = $('#career').val();
+	ar.name=name;
+	ar.age=age;
+	ar.career=career;
+	console.log(ar);
+};
+</script>
+
+</body>

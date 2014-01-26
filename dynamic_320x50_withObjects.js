@@ -156,6 +156,7 @@ $("button#testing").on("click", function() {
 	var imageCount = $('#image_count').val();
 	var theBigArray = [];
 	for(var i = 1;i<=imageCount;i++) {
+		var allStyles = new Object();
 		var className = '.image' + (i);
 		var height = $(className).children(".dynamic").siblings(".three_twenty_fifty").children().children().children().height();
 		var width = $(className).children(".dynamic").siblings(".three_twenty_fifty").children().children().children().width();
@@ -168,31 +169,26 @@ $("button#testing").on("click", function() {
 		var fontWeight = $(className).children(".dynamic").siblings(".three_twenty_fifty").children().children().children().css("font-weight");
 		var fontStyle = $(className).children(".dynamic").siblings(".three_twenty_fifty").children().children().children().css("font-style");
 		var fontSize = $(className).children(".dynamic").siblings(".three_twenty_fifty").children().children().children().css("font-size");
-		console.log(height);
-		console.log(width);
-		console.log(text);
-		console.log(textAlign);
-		console.log(marginLeft);
-		console.log(marginTop);
-		console.log(fontFamily);
-		console.log(color);
-		console.log(fontFamily);
-		console.log(fontStyle);
-		console.log(fontSize);
-		theBigArray.push(className);
-		theBigArray.push(height);
-		theBigArray.push(width);
-		theBigArray.push(text);
-		theBigArray.push(textAlign);
-		theBigArray.push(marginLeft);
-		theBigArray.push(marginTop);
-		theBigArray.push(fontFamily);
-		theBigArray.push(color);
-		theBigArray.push(fontWeight);
-		theBigArray.push(fontStyle);
-		theBigArray.push(fontSize);
-		console.log(theBigArray);
+		var backgroundImage = $(className).children(".dynamic").siblings(".three_twenty_fifty").children().children().css("background-image");
+		allStyles.height=height;
+		allStyles.width=width;
+		allStyles.text=text;
+		allStyles.textAlign=textAlign;
+		allStyles.marginLeft=marginLeft;
+		allStyles.marginTop=marginTop;
+		allStyles.fontFamily=fontFamily;
+		allStyles.color=color;
+		allStyles.fontWeight=fontWeight;
+		allStyles.fontStyle=fontStyle;
+		allStyles.fontSize=fontSize;
+		allStyles.backgroundImage=backgroundImage;
+		theBigArray.push(allStyles);
 	};
+		console.log(theBigArray);
+		var test1 = theBigArray[0].height;
+		var test2 = theBigArray[1].height;
+		console.log(test1);
+		console.log(test2);
 });
 
 window.onbeforeunload = function() {
@@ -201,93 +197,6 @@ window.onbeforeunload = function() {
 
 
 
-
-
-
-/*$("form#dynamic").on("change", function() {
-	var dynamic = $("input[name=dynamic]:checked").val();
-	$(".dynamic_distance").css("display", dynamic);	
-});
-
-var height=$("#height").val();
-		$("#text").css("height", height);
-
-var width=$("#width").val();
-	$("#text").css("width", width);
-
-$("#distance_text").keyup(function() {
-	var text = $("#distance_text").val();
-	$("#text").html(text);
-});
-
-
-$("#creative_url").keyup(function() {
-	var creative_url = $("#creative_url").val();
-	$("#background").css("background-image", 'url(' + creative_url + ')');
-});
-
-	$("select.alignment").on("change", function() {
-	var alignment = $("option[name=alignment]:selected").val();
-	$("#text").css("text-align", alignment);	
-});
-
-	$("#margin_left").keyup(function() {
-	var marginLeft = $("#margin_left").val();
-	$("#text").css("margin-left", marginLeft + "px");
-	$("#width").val(320-marginLeft);
-	var width=$("#width").val();
-	$("#text").css("width", width);
-});
-
-	$("#margin_top").keyup(function() {
-		var marginTop = $("#margin_top").val();
-		$("#text").css("margin-top", marginTop + "px");
-		$("#height").val(50-marginTop);
-		var height=$("#height").val();
-		$("#text").css("height", height);
-	});
-
-		$("#height").keyup(function() {
-	var height=$("#height").val();
-	$("#text").css("height", height);
-	});
-
-	$("#width").keyup(function() {
-		var width=$("#width").val();
-		$("#text").css("width", width);
-	});
-
-$("#color").keyup(function() {
-		var color=$("#color").val();
-		$("#text").css("color", color);
-	});
-
-$("#font-size").keyup(function() {
-	var fontSize=$("#font-size").val();
-	$("#text").css("font-size", fontSize + "px");
-	});
-
-$("select.font").on("change", function() {
-	var font = $("option[name=font]:selected").val();
-	$("#text").css("font-family", font);	
-});
-
-$("form#bold").on("change", function() {
-	var bold = $("input[name=bold]:checked").val();
-	$("#text").css("font-weight", bold);	
-});
-
-$("form#italic").on("change", function() {
-	var italic = $("input[name=italic]:checked").val();
-	$("#text").css("font-style", italic);	
-})
-
-/*$("form#bold").on("change", function() {
-	var bold = $("input[name=bold]:checked").val();
-	$("#text").css("font-style", bold);	
-});*/
-
-//Code to enter inner html for div#code
 
 $("button#finish").on("click", function() {
 	var destinationUrl = $("#destination_url").val();
