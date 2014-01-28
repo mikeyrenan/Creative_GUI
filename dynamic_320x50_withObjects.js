@@ -158,6 +158,7 @@ $("button#testing").on("click", function() {
 	for(var i = 1;i<=imageCount;i++) {
 		var allStyles = new Object();
 		var className = '.image' + (i);
+		var spanId = 'image' + (i);
 		var height = $(className).children(".dynamic").siblings(".three_twenty_fifty").children().children().children().height();
 		var width = $(className).children(".dynamic").siblings(".three_twenty_fifty").children().children().children().width();
 		var text = $(className).children(".dynamic").siblings(".three_twenty_fifty").children().children().children().html();
@@ -170,6 +171,7 @@ $("button#testing").on("click", function() {
 		var fontStyle = $(className).children(".dynamic").siblings(".three_twenty_fifty").children().children().children().css("font-style");
 		var fontSize = $(className).children(".dynamic").siblings(".three_twenty_fifty").children().children().children().css("font-size");
 		var backgroundImage = $(className).children(".dynamic").siblings(".three_twenty_fifty").children().children().css("background-image");
+		allStyles.spanId=spanId;
 		allStyles.height=height;
 		allStyles.width=width;
 		allStyles.text=text;
@@ -189,6 +191,16 @@ $("button#testing").on("click", function() {
 		var test2 = theBigArray[1].height;
 		console.log(test1);
 		console.log(test2);
+		
+		var destinationUrl = $("#destination_url").val();
+		
+		var spanText = "";
+
+		for(var i = 0;i<=imageCount-1;i++) {
+				spanText+=('<a href="'+ destinationUrl+ '" style="text-decoration:none;display:block;"><span id="'+theBigArray[(i)].spanId+'" style="background:'+theBigArray[(i)].backgroundImage+') no-repeat;background-size:100%;width:320px;height:50px;display:block;"><span style="font-family:'+theBigArray[(i)].fontFamily+';font-size:'+theBigArray[(i)].fontSize+';color:'+theBigArray[(i)].color+';margin-top:'+ theBigArray[(i)].marginTop+';margin-left:'+theBigArray[(i)].marginLeft+';float:left;text-align:'+theBigArray[(i)].textAlign+';font-weight:'+theBigArray[(i)].fontWeight+';width:'+theBigArray[(i)].width+'px;height:'+theBigArray[(i)].height+'px"></span></span>')
+		}
+		$('#code').text(spanText);
+			
 });
 
 window.onbeforeunload = function() {
