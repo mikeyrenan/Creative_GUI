@@ -1,11 +1,3 @@
-//DATA - saving data locally 
-//SUB - cloning objects as NEW 
-//NODE - library 
-//Angular and Ember 
-//indesign
-//node.codeschool.com
-//codeschool (js paths . . . backbone? node?)
-
 $("button#start").on("click", function() {
 	var type = $("input[name=type]:checked").val();
 	var size = $("input[name=size]:checked").val();
@@ -23,14 +15,8 @@ $("button#clone").on("click", function() {
 			$('#first').clone().insertAfter(".image1").removeAttr("class").removeAttr("id").addClass("image" + i).prepend("<p>Image"+i+"</p>");
 			$(".image2 p").css({"fontWeight": "bold","font-size": "25px"});
 			$('.image2').find('*').addClass("2");
-			/*$('.image2').find('*').each(function(){
-				var currentID = this.id;
-				var newID = currentID + "2";
-				this.id = newID;
-				console.log(newID);
-			});
-			$('.image2 input#distance_text').val("");*/
 		}
+		
 		else {
 			var classNumber = "" + i;
 			var newImage = '.image' + (i-1); 
@@ -38,12 +24,6 @@ $("button#clone").on("click", function() {
 			$('#first').clone().insertAfter(newImage).removeAttr("class").removeAttr("id").addClass("image" + i).prepend("<p>Image"+i+"</p>");
 			$(boldP).children("p").css({"fontWeight": "bold","font-size": "25px"});
 			$(boldP).find('*').addClass(classNumber);
-			/*$(boldP).find('*').each(function(){
-				var currentID = this.id;
-				var newID = currentID + (i);
-				this.id = newID;
-				console.log(newID);
-			});*/
 		}
 	};
 
@@ -148,9 +128,6 @@ $("form.italic").on("change", function() {
 });
 });
 
-//NEXT create a for loop starting at 1-i where i = total number of images
-//asign each relevant value to an array per <image> span
-//After each array is saved, pull values from these arrays, and use these values to construct the html
 
 $("button#testing").on("click", function() {
 	var imageCount = $('#image_count').val();
@@ -186,19 +163,53 @@ $("button#testing").on("click", function() {
 		allStyles.backgroundImage=backgroundImage;
 		theBigArray.push(allStyles);
 	};
-		console.log(theBigArray);
-		var test1 = theBigArray[0].height;
-		var test2 = theBigArray[1].height;
-		console.log(test1);
-		console.log(test2);
 		
 		var destinationUrl = $("#destination_url").val();
 		
 		var spanText = "";
-
+		spanText+=('<a href="'+ destinationUrl+ '" style="text-decoration:none;display:block;">');
 		for(var i = 0;i<=imageCount-1;i++) {
-				spanText+=('<a href="'+ destinationUrl+ '" style="text-decoration:none;display:block;"><span id="'+theBigArray[(i)].spanId+'" style="background:'+theBigArray[(i)].backgroundImage+') no-repeat;background-size:100%;width:320px;height:50px;display:block;"><span style="font-family:'+theBigArray[(i)].fontFamily+';font-size:'+theBigArray[(i)].fontSize+';color:'+theBigArray[(i)].color+';margin-top:'+ theBigArray[(i)].marginTop+';margin-left:'+theBigArray[(i)].marginLeft+';float:left;text-align:'+theBigArray[(i)].textAlign+';font-weight:'+theBigArray[(i)].fontWeight+';width:'+theBigArray[(i)].width+'px;height:'+theBigArray[(i)].height+'px"></span></span>')
-		}
+				if(i==0) {
+				spanText+=('<span id="'+theBigArray[(i)].spanId+'" style="position:absolute;background:'+theBigArray[(i)].backgroundImage+' no-repeat;background-size:100%;width:320px;height:50px;display:block;"><span style="font-family:'+theBigArray[(i)].fontFamily+';font-size:'+theBigArray[(i)].fontSize+';color:'+theBigArray[(i)].color+';margin-top:'+ theBigArray[(i)].marginTop+';margin-left:'+theBigArray[(i)].marginLeft+';float:left;text-align:'+theBigArray[(i)].textAlign+';font-weight:'+theBigArray[(i)].fontWeight+';width:'+theBigArray[(i)].width+'px;height:'+theBigArray[(i)].height+'px">'+theBigArray[(i)].text+'</span></span>')
+			}
+			else {
+				spanText+=('<span id="'+theBigArray[(i)].spanId+'" style="background:'+theBigArray[(i)].backgroundImage+' no-repeat;background-size:100%;width:320px;height:50px;display:none;"><span style="font-family:'+theBigArray[(i)].fontFamily+';font-size:'+theBigArray[(i)].fontSize+';color:'+theBigArray[(i)].color+';margin-top:'+ theBigArray[(i)].marginTop+';margin-left:'+theBigArray[(i)].marginLeft+';float:left;text-align:'+theBigArray[(i)].textAlign+';font-weight:'+theBigArray[(i)].fontWeight+';width:'+theBigArray[(i)].width+'px;height:'+theBigArray[(i)].height+'px">'+theBigArray[(i)].text+'</span></span>')
+			};
+		};
+		spanText+=('</a><script type="text/javascript"> window.onload = function(){var i_one=2, step=1;function cycleImage(){');
+		for(var i = 1;i<=imageCount;i++) {
+		 if(i==1) {
+		 spanText+=('if (i_one === '+i+') {');
+			 	 spanText+=('document.getElementById("image'+i+'").style.display = "block";');
+			 	 var z=i;
+			 	 for(var y = 1;y<=imageCount-1;y++) {
+			 	 	spanText+=('document.getElementById("image'+((z%imageCount)+1)+'").style.display = "none";');
+			 	 	z++;
+			 	};
+			 	spanText+=('}')
+			 }
+			 else if(i==imageCount) {
+			 	spanText+=('else if (i_one === '+i+') {');
+			 	 spanText+=('document.getElementById("image'+i+'").style.display = "block";');
+			 	 var z=i;
+			 	 for(var y = 1;y<=imageCount-1;y++) {
+			 	 	spanText+=('document.getElementById("image'+((z%imageCount)+1)+'").style.display = "none";');
+			 	 	z++;
+			 	};
+			 	spanText+=('i_one=0;}');
+			 }
+			 else {
+			 	spanText+=('else if (i_one === '+i+') {');
+			 	 spanText+=('document.getElementById("image'+i+'").style.display = "block";');
+			 	 var z=i;
+			 	 for(var y = 1;y<=imageCount-1;y++) {
+			 	 	spanText+=('document.getElementById("image'+((z%imageCount)+1)+'").style.display = "none";');
+			 	 	z++;
+			 	};
+			 	spanText+=('}');
+			 };
+			};
+			spanText+=('i_one++;step++;if (step <'+(imageCount*3)+') { setTimeout(cycleImage, 2000);}	 }	 setTimeout(cycleImage, 2000);}</script>');
 		$('#code').text(spanText);
 			
 });

@@ -1,0 +1,52 @@
+<a href="%{URL0}" style="text-decoration:none;display:block;"> 
+	<span id="thinknear-ad-container1" style="background:url(http://thinknear-hosted.thinknearhub.com/production/creatives/creative_120131210200025.png) no-repeat;background-size:100%;width:320px;height:50px;display:block;">	 
+		<span id="merchant" style="line-height:14px;font-family:Arial, Helvetica, sans-serif;font-size:15px;color:#662d23;margin-top: 24px;margin-left: 57px;float:left;text-align:center;text-transform:uppercase;font-weight:bold;width:180px;">
+		1</span>	
+	</span> 
+	<span id="thinknear-ad-container2" style="background:url(http://thinknear-hosted.thinknearhub.com/production/creatives/creative_120131210200058.png) no-repeat;background-size:100%;width:320px;height:50px;display:none">	 
+		<span id="merchant" style="line-height:14px;font-family:Arial, Helvetica, sans-serif;font-size:15px;color:#662d23;margin-top: 2px;width: 285px;float:left;text-align:center;font-weight:bold;">
+		2</span>	
+	</span>
+	<span id="thinknear-ad-container3" style="background:url(http://thinknear-hosted.thinknearhub.com/production/creatives/creative_120131210200122.png) no-repeat;background-size:100%;width:320px;height:50px;display:none;">	 
+		<span id="merchant" style="line-height:14px;font-family:Arial, Helvetica, sans-serif;font-size:15px;color:#662d23;margin-top: 20px;margin-left: 60px;float:left;text-align:center;text-transform:none;font-weight:bold;width:180px;">
+		3</span>	 
+	</span>
+	<span id="thinknear-ad-container4" style="background:url(http://thinknear-hosted.thinknearhub.com/production/creatives/creative_120131210200148.png) no-repeat;background-size:100%;width:320px;height:50px;display:none;">	 
+		<span id="merchant" style="line-height:14px;font-family:Arial, Helvetica, sans-serif;font-size:13px;color:#662d23;margin-top: 12px;margin-left: 50px;float:left;text-align:center;text-transform:uppercase;font-weight:bold;width:260px;letter-spacing: -1;">Arby's is only %{DISTANCE_ALL_CAPS} away!
+		4</span>
+	</span>	 
+	</a>	
+	<script type="text/javascript"> window.onload = function(){	 
+		var i_one=1, step=0; 
+		function cycleImage(){
+			 if (i_one === 1) {
+			 	 document.getElementById("thinknear-ad-container1").style.display = "block";
+			 	 document.getElementById("thinknear-ad-container2").style.display = "none";
+			 	 document.getElementById("thinknear-ad-container3").style.display = "none";
+			 	 document.getElementById("thinknear-ad-container4").style.display = "none";	 
+			 	 }
+			 else if (i_one === 2) {
+			 	document.getElementById("thinknear-ad-container2").style.display = "block";	 
+			 	document.getElementById("thinknear-ad-container1").style.display = "none"; 
+			 	document.getElementById("thinknear-ad-container3").style.display = "none";	 
+			 	document.getElementById("thinknear-ad-container4").style.display = "none";	 
+			 	}
+			 else if (i_one === 3) {
+			 	document.getElementById("thinknear-ad-container3").style.display = "block";	 
+			 	document.getElementById("thinknear-ad-container2").style.display = "none"; 
+			 	document.getElementById("thinknear-ad-container1").style.display = "none";
+			 	document.getElementById("thinknear-ad-container4").style.display = "none";
+			 	} 
+			 else if (i_one === 4) {
+			 	document.getElementById("thinknear-ad-container4").style.display = "block";
+			 	document.getElementById("thinknear-ad-container3").style.display = "none"; 
+			 	document.getElementById("thinknear-ad-container2").style.display = "none";	 
+			 	document.getElementById("thinknear-ad-container1").style.display = "none";	 
+			 	i_one = 0;	 
+			 	} 
+			 i_one++; 
+			 step++;	 	 
+			if (step < 12) { 
+				setTimeout(cycleImage, 4000);	 
+			}	 }	 setTimeout(cycleImage, 4000); } </script> 
+		

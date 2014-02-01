@@ -123,6 +123,8 @@ button#clone {
   margin-bottom: 0px;
 }
 
+
+
 .dynamic_distance {
   display:none;
 }
@@ -130,4 +132,9 @@ button#clone {
 #intro {
   font-size:25px;
   font-weight:bold;
+}
+
+button#textBox {
+  padding-left:40px;
+  display:block;
 }
